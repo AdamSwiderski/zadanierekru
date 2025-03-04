@@ -1,0 +1,80 @@
+@if (moviesListStateService.loading()) {
+  <div class="flex justify-center">
+    <mat-spinner></mat-spinner>
+  </div>
+} @else {
+  @if (moviesList().length > 0) {
+    <mat-table
+      [dataSource]="moviesList()"
+      matSort cdkDropListLockAxis="x"
+      cdkDropListOrientation="horizontal"
+      (matSortChange)="sortData($event)"
+      cdkDropList
+      (cdkDropListDropped)="dropListDropped($event)">
+
+      <ng-container matColumnDef="poster">
+        <mat-header-cell *matHeaderCellDef cdkDrag mat-sort-header sortActionDescription="Sort by poster">
+          Poster
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div class="p-2">
+            <img [ngSrc]="element.Poster" [height]="50" [width]="100" alt="Place image title">
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef cdkDrag mat-sort-header sortActionDescription="Sort by title">
+          Title
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.Title || '-' }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="year">
+        <mat-header-cell *matHeaderCellDef cdkDrag mat-sort-header sortActionDescription="Sort by year">
+          Year
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.Year || '-' }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="runtime">
+        <mat-header-cell *matHeaderCellDef cdkDrag mat-sort-header sortActionDescription="Sort by runtime">
+          Runtime
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.Runtime || '-' }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="genre">
+        <mat-header-cell *matHeaderCellDef cdkDrag mat-sort-header sortActionDescription="Sort by genre">
+          Genre
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.Genre || '-' }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="director">
+        <mat-header-cell *matHeaderCellDef cdkDrag mat-sort-header sortActionDescription="Sort by director">
+          Director
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.Director || '-' }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="plot">
+        <mat-header-cell *matHeaderCellDef cdkDrag mat-sort-header sortActionDescription="Sort by plot">
+          Plot
+        </mat-header-cell>
+        >
+        <mat-cell *matCellDef="let element"> {{ element.Plot || '-' }}</mat-cell>
+        >
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      >
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      >
+    </mat-table>
+  } @else {
+    <p class="text-xl text-center">Brak danych, użyj filtru</p>
+  }
+}
+
+
