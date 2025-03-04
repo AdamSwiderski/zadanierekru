@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MoviesListFilterComponent } from './movies-list-filter.component';
-import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
-import {MoviesListStateService} from '../../services/movies-list-state.service';
-import {FilterType} from '../../enums/filter-type.enum';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { MoviesListStateService } from '../../services/movies-list-state.service';
+import { FilterType } from '../../enums/filter-type.enum';
 
 describe('MoviesListFilterComponent', () => {
   let component: MoviesListFilterComponent;
